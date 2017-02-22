@@ -1,0 +1,17 @@
+{% extends 'layout.html' %} {% load staticfiles %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="panel-heading">
+    <a href="{{ url_cad }}">
+        <button class="btn btn btn-primary" id="salvarBtn" type="submit"><i class="fa fa-plus"></i>Novo</button>
+    </a>
+</div>
+{% include 'lst_media.html' %}
+{% endblock %}
+{% block scriptsJava %}
+    <script>
+            $('#dynamic-table').dataTable( {
+                "aaSorting": [[ 4, "desc" ]]
+            } );
+    </script>
+{% endblock %}

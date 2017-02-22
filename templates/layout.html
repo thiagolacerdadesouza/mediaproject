@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    {% include 'head.html' %}
+    {% block head %}
+    {% endblock %}
+</head>
+<body class="sticky-header left-side-collapsed">
+<section>
+    <!-- left side start-->
+    {% include 'menu.html' %}
+    <!-- left side end-->
+    <!-- main content start-->
+    <div class="main-content" >
+        <!-- header section start-->
+        <div class="header-section">
+        <!--toggle button start-->
+        <a class="toggle-btn"><i class="fa fa-bars"></i></a>
+        <!--toggle button end-->
+        <!--search start-->
+        <form class="searchform" action="index.html" method="post">
+            <input type="text" class="form-control" name="keyword" placeholder="Pesquise aqui..." />
+        </form>
+        <!--search end-->
+        <!--notification menu start -->
+        <div class="menu-right">
+            <ul class="notification-menu">
+                <li>
+                    <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <img src="/static/images/photos/user-avatar.png" alt="" />
+                        {{ request.user.first_name }}
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+                        <li><a href="/login/mudarsenha"><i class="fa fa-cog"></i>Muda Senha</a></li>
+                        <li><a href="/login/logout"><i class="fa fa-sign-out"></i> Sair</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!--notification menu end -->
+        </div>
+        <!-- header section end-->
+        <!-- page heading start-->
+        <div class="page-heading">
+            <h3>
+                {{ pagetitle|safe }}<small>{{ pagesubtitle|safe }}</small>
+            </h3>
+            <ul class="breadcrumb">
+                {% for item in pagebreadgrumb %}
+                    <li>
+                        <a href="{{ item.link }}">{{ item.label}}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <!-- page heading end-->
+        <!--body wrapper start-->
+        <div class="wrapper">
+              {% block content %}
+              {% endblock %}
+        </div>
+        <!--body wrapper end-->
+        <footer class="sticky-footer">
+            Geobit © 2016 Todo conteúdo é reservado
+        </footer>
+    </div>
+    <!-- main content end-->
+</section>
+<!-- JavaScript libs are placed at the end of the document so the pages load faster  - moved to top to test something-->
+<!--footer section start-->
+<!--footer section end-->
+<!-- /java includes -->
+{% block scriptsJava %}{% endblock %}
+</body>
+</html>
